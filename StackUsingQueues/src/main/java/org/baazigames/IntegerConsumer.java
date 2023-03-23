@@ -1,7 +1,7 @@
 package org.baazigames;
 
-import java.util.Objects;
-import java.util.Stack;
+import java.util.ArrayList;
+import java.util.List;
 
 public class IntegerConsumer implements Consumer{
     private final Stack<Integer> sink;
@@ -11,11 +11,14 @@ public class IntegerConsumer implements Consumer{
     }
     @Override
     public void consume() {
-        Integer consumedInteger = sink.pop();
-        if (Objects.isNull(consumedInteger)) {
+        if (sink.isEmpty()) {
             System.out.println("Nothing to consume...");
         } else {
-            System.out.println("Consumer consumed: " + consumedInteger);
+            List<Integer> consumedIntegers = new ArrayList<>();
+            while(!sink.isEmpty()) {
+                consumedIntegers.add(sink.pop());
+            }
+            System.out.println("Consumer consumed: " + consumedIntegers);
         }
     }
 }
