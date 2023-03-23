@@ -79,12 +79,17 @@ public class Stack<E> implements Collection<E> {
 
     @Override
     public boolean add(E e) {
-        return false;
+        try {
+            push(e);
+            return true;
+        } catch (Exception exception) {
+            return false;
+        }
     }
 
     @Override
     public boolean remove(Object o) {
-        return false;
+        return mainQueue.remove(o);
     }
 
     @Override
